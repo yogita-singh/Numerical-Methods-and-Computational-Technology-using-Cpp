@@ -61,3 +61,4 @@ void solver(int n,vector<vector<double>>&a,vector<double>&x,double eps)
        		 cout<<"x"<<" = "<<x[p]<<endl;
        return 0;
       }
+      
