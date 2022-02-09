@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solver(int n,vector<vector<double>>&a,vector<double>&x,double eps)
+{
+    int flag=0,cnt=0,y;
+    vector<double> temp(n,0);
+    while(flag<n)
+    {
+        vector<double> temp(n,0);
+        temp=x;
+        cout<<"\n"<<cnt+1<<"."<<setw(16);
+        for (int i=0;i<n;i++)
+        {
+            y=temp[i];
+            temp[i]=a[i][n];
+            for (int j=0;j<n;j++)
+            {
+                if (j!=i)
+                temp[i]=temp[i]-a[i][j]*temp[j];
+            }
+            temp[i]=temp[i]/a[i][i];
+            if (abs(temp[i]-y)<=eps)
+                flag++;
+            cout<<temp[i]<<setw(18);
+        }
+        x=temp;
+        cout<<"\n";
+        cnt++;
+    }
+}
+
+
+       int main()
+	 {
+	      int n,p,q,r,flag=0,cnt=0;
+              
+                ifstream fin;
+                fin.open("coefficientfile.txt");
+                fin>>n;
+ 
+ 	        vector<vector<double>> a(n,vector<double>(n+1,0));
+    		vector<double> x(n,0);
+   
+		 double eps,y;
+  
+    		for (p=0;p<n;p++)
+     		   for (q=0;q<=n;q++)
+       		     fin>>a[p][q];
+
+   		 fin>>eps;
+  	
+	     for (p=0;p<n;p++)
+      		  for (r=p+1;r<n;r++)
+        	    if (abs(a[p][p])<abs(a[r][p]))
+              	    swap(a[p],a[r]);
+
+   		 solver(n,a,x,eps);
+   		 cout<<"\n The solution is :\n";
+            for (p=0;p<n;p++)
+       		 cout<<"x"<<" = "<<x[p]<<endl;
+       return 0;
+      }
