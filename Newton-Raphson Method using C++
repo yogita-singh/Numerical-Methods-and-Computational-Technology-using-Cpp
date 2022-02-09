@@ -1,0 +1,37 @@
+#include<iostream>
+#include<math.h>
+
+
+#define delF(float)
+#define F(float)
+
+int main()
+{
+   float x,a,b,diff,M,ep,fx;
+   std::cout<<"Enter the value  ";
+   std::cin>>x;
+   std::cout<<" The value of differentiation of x*sin(x)+cos(x) is "<<a;
+   delF(x)
+  M = a/b;
+   ep = ((x) - M);
+   std::cout<<"\nThe approximation for x(n+1) is "<<ep;
+   
+   delF(float x)
+   {
+      diff = x*cos(x);
+      std::cout<<diff;
+      a = diff;
+      return(a);
+   }
+
+   F(float x)
+   {
+       fx = ((x*sin(x))+cos(x));
+       std::cout<<fx; 
+       b = fx;
+       return(b);
+   }
+   
+  
+
+}
