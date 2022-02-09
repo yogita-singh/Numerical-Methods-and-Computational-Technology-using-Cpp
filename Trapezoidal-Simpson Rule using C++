@@ -1,0 +1,68 @@
+
+#include<iostream>
+#include<math.h>
+
+
+#define f(x) 1/(1-pow(x,2))
+
+using namespace std;
+int main()
+{
+ float lower, upper, integration=0.0, stepSize, k;
+ int i, si;
+
+
+ std::cout<<"Enter lower limit of integration: ";
+ std::cin>>lower;
+ std::cout<<"Enter upper limit of integration: ";
+ std::cin>>upper;
+ std::cout<<"Enter number of sub intervals: ";
+ std::cin>>si;
+
+
+
+
+ stepSize = (upper - lower)/si;
+
+
+ integration = f(lower) + f(upper);
+
+//simpson
+
+ for(i=1; i<= si-1; i++)
+ {
+  k = lower + i*stepSize;
+
+  if(i%2==0)
+  {
+    integration = integration + 2 * (f(k));
+  }
+  else
+  {
+    integration = integration + 4 * (f(k));
+  }
+
+ }
+
+ integration = integration * stepSize/3;
+
+ std::cout<< endl <<"Required value of integration by Simpson rule is: "<< integration;
+
+
+//trapezoidal
+
+
+for(i=1; i<= si-1; i++)
+ 	{
+ 	     k = lower + i*stepSize;
+  	     integration = integration + 2 * (f(k));
+ 	}
+
+    integration = integration * stepSize/2;
+
+    std::cout<< endl<<"Required value of integration by Trapezoidal is: "<< integration;
+
+
+ return 0;
+}
+
