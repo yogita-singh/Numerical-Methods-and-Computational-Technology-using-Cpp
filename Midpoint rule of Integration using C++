@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define func(x) sqrt(1+(x*x))
+    
+
+
+ void integrator(double x,double y,int i,double exact)
+ 
+            // integrator(x,y,i,exact) //funtioon declaration
+    {
+         double z,error,f,u,v,mid, del_x;      
+         
+        
+           del_x = (y-x)/i;
+           z = x+del_x;
+         
+                 
+              do
+              {
+                mid = (x+z)/2;
+                x = x+del_x;
+                z = z+del_x;
+                u = func(mid);
+                v = u*del_x;
+                f = f+v;
+                error = exact-f;
+              }
+             
+              while(z<=y);
+              {
+                   cout<<"\n"<<i;
+                   cout<<"\n "<<f;
+                   cout<<"\t "<<error;
+              }
+     }
+
+int main()
+{
+  double x,y,z,exact;
+  double error,del_x,mid,u,v,f;
+  int n,i;
+  exact=8.1458;
+
+
+     cout<<"enter value of lower limit x= ";
+     cin>>x;
+     cout<<"enter value of upper limit y= ";
+     cin>>y;
+     cout<<"enter value of n";
+     cin>>n;
+
+     cout<<"exact value ="<<exact;
+
+  for (i=1;i<=n;i++)
+    {
+        integrator(x,y,i,exact);       //function calling
+    }
+  return 0;
+
+}
