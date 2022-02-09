@@ -1,0 +1,78 @@
+#include<iostream>
+#include<math.h>
+#include<stdlib.h>
+#include<fstream>
+#include<new>
+#include<stdio.h>
+
+#define SQ(x)(x)*(x)
+#define RESP(x) 1.0/(x)
+#define free_arg char*
+#define nr_end 1
+#define TINY 1.0e-20
+
+using namespace std;
+typedef unsigned long int us;
+
+double *dvector (long n1, long nh);
+long *lvector (long n1, long nh);
+double **matrix (long nrl, long nrh, long ncl, long nch);
+long **lmatrix (long nrl, long nrh, long ncl, long nch);
+double ***f3tensor (long nrl, long nrh, long ncl, long nch);
+void free_vector (long *v,long nl,long nh);
+void free_lvector (long *v,long nl,long nh);
+void free_matrix (long nrl, long nrh, long ncl, long nch);
+void free_lmatrix (long **m, long nrl, long nrh, long ncl, long nch);
+void free_tensor(double ***t, long nrl, long nrh, long ncl, long nch, long ndl, long ndh);
+
+
+
+//define
+#define F(x) (((x)*(x)*(x))-(x) + 1)
+#define ESP 0.001
+using namespace std;
+// function x^3 -x +1
+
+int main()
+{
+
+int i=1;
+float x0,x1,x2;
+double f1,f2,f0,t;
+
+cout<<"Enter the value of x0:"<<"\n";
+cin>>x0;
+//cout<<F(x0)<<\n;
+
+cout<<"ENter thr value of x1"<<"\n";
+cin>>x1;
+
+
+
+do
+{
+  int i=1;
+    x2=(x0+x1)/2.0;
+    f0=F(x0);
+    f1=F(x1);
+    f2=F(x2);
+    
+    if(f0*f2<0)
+    {
+        x1=x2;
+        
+    }
+    else
+    {
+    x0=x2;
+    }
+      i++;
+}
+while((f1)*(f2)>ESP);
+            {
+        cout<< "\n\n root="<<x2<<endl;
+            }
+ 
+cout<<"\n x0 = "<<x0<<"\n x1 = "<<x1<<"\n x2 = "<<x2<<"\n f0 = "<<f0<<"\n f2 = "<<f2;
+
+}
